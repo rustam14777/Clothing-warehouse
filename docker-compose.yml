@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  fastapi-app:
+    build: .
+    env_file:
+      - .env_docker
+    ports:
+      - "8002:8000"
+    container_name: fastapi_app
+    command: ["/app/docker/docker.sh"]
+    depends_on:
+      - database
+
+  database:
+    image: postgres:16
+    container_name: postgres_app
+    env_file:
+      - .env_docker
+    ports:
+      - "5439:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  pg_data:
