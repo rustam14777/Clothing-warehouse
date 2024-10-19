@@ -50,7 +50,7 @@ as well as the following:
 
        Terminal
        pip install virtualenv
-       cd папка_проекта
+       cd project_folder
        python -m venv .venv
        .venv\Scripts\activate (Windows)
        .venv/bin/activate (Linux)
@@ -80,7 +80,7 @@ To run tests, follow these steps:
     
        Terminal
        pip install virtualenv
-       cd папка_проекта
+       cd project_folder
        python -m venv .venv
        .venv\Scripts\activate (Windows)
        .venv/bin/activate (Linux)
