@@ -5,7 +5,7 @@
 Clothing Warehouse is an application for managing a clothing inventory. Users can create orders, and administrators can process these orders, issue clothing, and manage stock.
 
 ## Technologies
-
+- <strong>Python 3.12</strong>: Programing Language. 
 - <strong>FastAPI</strong>: Asynchronous web framework for creating API.
 - <strong>PostgreSQL</strong>: Relational database.
 - <strong>Docker</strong>: For containerizing the application.
