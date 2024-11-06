@@ -65,10 +65,14 @@ app.include_router(router_order)
 
 @app.middleware('http')
 async def dispatch(request: Request, call_next):
-    name = request.url.path
-    method = request.method
-    url = request.url
-    ip = request.client.host
-    logger_request.info(f'Request from {name}: {method} - {url} ip - {ip}')
-    response = await call_next(request)
-    return response
+    try:
+        name = request.url.path
+        method = request.method
+        url = request.url
+        ip = request.client.host
+        logger_request.info(f'Request from {name}: {method} - {url} ip - {ip}')
+        response = await call_next(request)
+        return response
+    except Exception as e:
+        logger_request.error(f'Middleware error: {e}')
+        raise
