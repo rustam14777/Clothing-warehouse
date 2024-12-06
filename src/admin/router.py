@@ -48,14 +48,17 @@ async def add_clothing_size(
         if size is not None:
             increment_quantity = size.quantity + create_clothing.quantity
             await update_size(db, size.clothing_id, increment_quantity)
-            return JSONResponse(content={
+            message = JSONResponse(content={
                 'status': 'success',
                 'message': f'Added {create_clothing.quantity} units'
                 f' {create_clothing.name} '
                 f'size {create_clothing.size}'
             })
-        await add_size(db, new_clothing.id, create_clothing.size, create_clothing.quantity)
-        return create_clothing
+        else:
+            await add_size(db, new_clothing.id, create_clothing.size, create_clothing.quantity)
+            message = create_clothing
+        await db.commit()
+        return message
     except IntegrityError as error:
         logger.error(error)
         raise HTTPException(
@@ -116,6 +119,7 @@ async def delete_user_by_email(
                 detail=f'User with email {email} not found'
             )
         await delete_user(db, user)
+        await db.commit()
         return user
     except IntegrityError as error:
         logger.error(error)
@@ -165,6 +169,7 @@ async def delete_clothing_by_name(
                 detail=f'Clothing with name {name} not found'
             )
         await delete_clothing(db, clothing)
+        await db.commit()
         return clothing
     except IntegrityError as error:
         logger.error(error)
@@ -250,6 +255,7 @@ async def delete_orders_user(
                        f'order for the {name}'
             )
         await order_delete(db, order)
+        await db.commit()
         return order
     except IntegrityError as error:
         logger.error(error)

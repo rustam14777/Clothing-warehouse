@@ -56,6 +56,7 @@ async def create_order_for_user(
         await add_order(db, current_user.name, current_user.birthdate, current_user.email,
                         create_order.name, create_order.size)
         await update_quantity_size(db, clothing_sizes, create_order.size)
+        await db.commit()
         return create_order
     except IntegrityError as error:
         logger.error(error)
