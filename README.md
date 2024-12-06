@@ -39,7 +39,7 @@ as well as the following.**
    docker-compose up
    ```
 5. **The application will be available at:**
-   http://localhost:8000
+   http://localhost:8002
 
 ### 💻 Local Development Setup
 1. **Set up virtual environment.**
