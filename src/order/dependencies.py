@@ -30,4 +30,3 @@ async def update_quantity_size(db: AsyncSession, clothing_size: Clothing, size: 
     quantity_size = next(s for s in clothing_size.sizes if s.size == size)
     quantity_size.quantity -= 1
     db.add(quantity_size)
-    await db.commit()

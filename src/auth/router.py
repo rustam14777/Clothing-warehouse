@@ -47,6 +47,8 @@ async def create_user(user: CreateUser, db: AsyncSession = Depends(get_async_ses
             db, user.name, user.surname, user.birthdate, user.email,
             hashed_password
         )
+        await db.commit()
+        await db.refresh(db_add_user)
         return db_add_user
     except IntegrityError as error:
         logger.error(error)

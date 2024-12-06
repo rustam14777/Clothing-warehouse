@@ -21,8 +21,6 @@ async def add_user(
         name=name, surname=surname, birthdate=birthdate, email=email,
         hashed_password=hashed_password)
     db.add(user)
-    await db.commit()
-    await db.refresh(user)
     return user
 
 

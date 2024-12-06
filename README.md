@@ -43,7 +43,7 @@ as well as the following:
 
 5. The application will be available at:
 
-       http://localhost:8000
+       http://localhost:8002
 
 - <strong>IDE</strong>
 1. Install and activate a virtual environment:
